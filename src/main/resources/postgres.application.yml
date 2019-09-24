@@ -1,0 +1,22 @@
+spring:
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/webservicedb?createDatabaseIfNotExist=true
+    username: postgres
+    password: postgres        
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    database: POSTGRESQL 
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate: 
+      ddl-auto: update
+
+  jackson: 
+    deserialization: 
+      fail-on-unknown-properties: true

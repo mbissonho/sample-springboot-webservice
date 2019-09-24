@@ -4,12 +4,12 @@ spring:
     url: jdbc:mysql://localhost/webservicedb?createDatabaseIfNotExist=true&useSSL=false
     username: root
     password: root
-
-  jpa: 
+            
+  jpa:
     show-sql: true
     hibernate: 
       ddl-auto: update
-      
+
   jackson: 
     deserialization: 
       fail-on-unknown-properties: true
