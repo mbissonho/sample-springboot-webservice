@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "0a2a3de2-92b0-4811-91a9-1773a268c1e2",
+		"name": "Web Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "170c037b-8e75-4068-87f7-4fec94af9dfe",
+			"name": "Create Student",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"Mateus\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"_postman_id": "c8578557-aff1-423e-9d30-3e14272e9f49",
+			"name": "Update Student",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 1,\n\t\"name\":\"Mateus Almeida\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/student/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"student",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
