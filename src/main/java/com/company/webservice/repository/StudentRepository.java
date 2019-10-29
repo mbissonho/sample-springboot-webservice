@@ -6,4 +6,6 @@ import com.company.webservice.model.Student;
 
 public interface StudentRepository extends PagingAndSortingRepository<Student, Long> {
 
+	public Student findByName(String name);
+	
 }

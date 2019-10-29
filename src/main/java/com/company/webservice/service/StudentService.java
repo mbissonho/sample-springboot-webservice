@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.company.webservice.model.Student;
 import com.company.webservice.repository.StudentRepository;
+import com.company.webservice.resource.exception.StudentNotFoundException;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +47,13 @@ public class StudentService {
 	}
 
 	public Student getStudentByName(String name) {
-		return null;
+		Student student = repository.findByName(name);
+		
+		if(student == null) {
+			throw new StudentNotFoundException();
+		}
+		
+		return student;
 	}
 	
 }
