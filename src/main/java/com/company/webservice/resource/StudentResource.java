@@ -6,15 +6,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.company.webservice.model.Student;
+import com.company.webservice.resource.exception.StudentNotFoundException;
 import com.company.webservice.service.StudentService;
 
 import lombok.AllArgsConstructor;
@@ -31,6 +34,17 @@ public class StudentResource {
 		return new ResponseEntity<Iterable<Student>>(service.search(pageable), HttpStatus.OK);
 	}
 	
+	@GetMapping("/{name}")
+	public Student getStudentByName(@PathVariable String name) {
+		Student student = this.service.getStudentByName(name);
+		
+		if(student == null) {
+			throw new StudentNotFoundException();
+		}
+		
+		return service.getStudentByName(name);
+	}
+	
 	@PostMapping
 	public ResponseEntity<Student> create(@RequestBody @Valid Student student){
 		Student studentCreated = service.create(student);
@@ -41,5 +55,11 @@ public class StudentResource {
 	public ResponseEntity<Student> update(@PathVariable Long id, @RequestBody @Valid Student student){
 		return ResponseEntity.ok(service.update(id, student));
 	}
-
+	
+	@ExceptionHandler
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	private void studentNotFundHandler(StudentNotFoundException ex) {
+		
+	}
+	
 }

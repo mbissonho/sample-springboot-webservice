@@ -44,5 +44,9 @@ public class StudentService {
 		}
 		return studentOp.get();
 	}
+
+	public Student getStudentByName(String name) {
+		return null;
+	}
 	
 }
